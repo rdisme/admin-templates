@@ -1,0 +1,20 @@
+.DS_Store
+
+admin/logs/*
+!admin/logs/index.html
+
+composer.lock
+
+/vendor/
+
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
