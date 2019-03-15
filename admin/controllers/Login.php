@@ -12,7 +12,6 @@ class Login extends MY_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('captcha');
 	}
 
 
@@ -23,10 +22,7 @@ class Login extends MY_Controller {
 		if(200 === $this->getLoginStatus()) {
 			header("location:{$this->indexUrl}");
 		} else {
-			// 生成验证码
-			$cap = $this->captcha->get();
-			// 缓存验证码
-			$this->LoginLib->cacheCaptcha($cap['word']);
+			$cap = $this->get_captcha();
 			$data = array();
 			$data['image'] = $cap['image'];
 			$this->load->view('login/login',$data);
@@ -65,7 +61,7 @@ class Login extends MY_Controller {
 		}
 		// 判断IP
 		// if (! in_array($this->userIP, explode(',', $userinfo['ip']))) {
-		// 	die(json_encode(array('ret'=>403,'desc'=>'用户权限不足！')));	
+		// 	die(json_encode(array('ret'=>403,'desc'=>'用户权限不足！')));
 		// }
 		// 设置缓存uid
 		$this->LoginLib->cacheLoginStatus($userinfo['id']);
@@ -83,12 +79,29 @@ class Login extends MY_Controller {
 	}
 
 
-	public function demo()
+
+	// 更换验证码
+	public function change_captcha()
 	{
-		$ip = '';
-		$arr = explode(',', $ip);
-		var_dump($arr);
+		$cap = $this->get_captcha();
+		unset($cap['word']);
+		echo json_encode($cap);
 	}
+
+
+
+	// 获取验证码
+	public function get_captcha()
+	{
+		$this->load->library('captcha');
+		// 生成验证码
+		$cap = $this->captcha->get();
+		// 缓存验证码
+		$this->LoginLib->cacheCaptcha($cap['word']);
+		// 返回验证码信息
+		return $cap;
+	}
+
 
 
 	// 校验随机验证码

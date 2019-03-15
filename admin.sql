@@ -25,7 +25,7 @@ CREATE TABLE `admin_role` (
   `uptime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uniname` (`name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='西藏移动后台角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='后台角色表';
 
 
 CREATE TABLE `admin_rule` (
@@ -41,7 +41,7 @@ CREATE TABLE `admin_rule` (
   `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '权限类型 1表示隐藏菜单栏',
   PRIMARY KEY (`id`),
   KEY `cm` (`c`,`m`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='西藏移动后台权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='后台权限表';
 
 
 CREATE TABLE `admin_user` (
@@ -56,7 +56,7 @@ CREATE TABLE `admin_user` (
   `uptime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `ip` varchar(31) DEFAULT NULL COMMENT 'ip限制 顶多2个\n',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='西藏移动后台管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='后台管理员表';
 
 
 

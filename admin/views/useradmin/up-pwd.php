@@ -80,5 +80,5 @@ layui.use(['form','layer'], function(){
         }
     });
 });
-</script>    
+</script>
 </html>

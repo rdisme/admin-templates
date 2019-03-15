@@ -23,13 +23,13 @@ class Captcha
 	}
 
 
-	public function get()
+	public function get($width=340, $height=50)
 	{
 		$vals = array(
 			'expiration' => 30, // 默认30s过期
 			'word_length' => 6,
-			'img_width' => 200,
-    		'img_height' => 40,
+			'img_width' => $width,
+    		'img_height' => $height,
     		'pool' => '23456789abcdefghjklmnpqwxyzABCDEFGHJKLMNRSTUV',
 		    'img_path'  => $this->img_path,
 		    'img_url'   => $this->img_url
